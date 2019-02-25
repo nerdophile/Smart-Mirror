@@ -93,7 +93,7 @@ class NLG(object):
 
         positive_complements = [
             "good",
-            "nice",
+            "nice", 
             "great",
             "perfect",
             "Beautiful"
@@ -101,6 +101,7 @@ class NLG(object):
 
         negative_complements = [
             "bad",
+            "Pretty shit"
             "terrible"
         ]
 
@@ -225,7 +226,8 @@ class NLG(object):
         greeting_words = [
             "Hi",
             "Hey",
-            "Hello"
+            "Hello",
+            "Yo nigga"
         ]
 
         goofy_greetings = [

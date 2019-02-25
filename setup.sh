@@ -1,5 +1,4 @@
 #!/bin/bash
-
 pip install virtualenv
 virtualenv hhsmartmirror
 source ./hhsmartmirror/bin/activate

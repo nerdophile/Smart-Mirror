@@ -1,0 +1,72 @@
+{
+  "data" : {
+    "lookups" : [
+      "trait"
+    ],
+    "name" : "Intent",
+    "lang" : "en",
+    "exotic" : false,
+    "id" : "Intent",
+    "values" : [
+      {
+        "value" : "affirmation"
+      },
+      {
+        "value" : "appearance"
+      },
+      {
+        "value" : "appreciation"
+      },
+      {
+        "value" : "greeting"
+      },
+      {
+        "value" : "holidays"
+      },
+      {
+        "value" : "insult"
+      },
+      {
+        "value" : "joke"
+      },
+      {
+        "value" : "maps"
+      },
+      {
+        "value" : "meaning of life"
+      },
+      {
+        "value" : "news"
+      },
+      {
+        "value" : "personal status"
+      },
+      {
+        "value" : "presentation"
+      },
+      {
+        "value" : "snow white"
+      },
+      {
+        "value" : "uber"
+      },
+      {
+        "value" : "user name"
+      },
+      {
+        "value" : "user status"
+      },
+      {
+        "value" : "weather"
+      },
+      {
+        "value" : "youtube"
+      },
+      {
+        "value" : "zomato"
+      }
+    ],
+    "doc" : "User-defined entity",
+    "builtin" : false
+  }
+}

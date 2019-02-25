@@ -29,4 +29,4 @@ client = houndify.TextHoundClient(CLIENT_ID, CLIENT_KEY, "test_user", requestInf
 # client.setHoundRequestInfo('ClientMatches', clientMatches)
 
 response = client.query(QUERY)
-print response
+print(response)

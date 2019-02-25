@@ -15,21 +15,21 @@ class Knowledge(object):
         lat = loc_obj['lat']
         lon = loc_obj['lon']
 
-        weather_req_url = "https://api.darksky.net/forecast/%s/%s,%s" % (self.weather_api_token, lat, lon)
+        weather_req_url = "https://api.darksky.net/forecast/%s/%s,%s" % (
+        self.weather_api_token, lat, lon)
         r = requests.get(weather_req_url)
         weather_json = json.loads(r.text)
-        
 
         temperature = int(weather_json['currently']['temperature'])
 
         current_forecast = weather_json['currently']['summary']
-        #hourly_forecast = weather_json['minutely']['summary']
+        # hourly_forecast = weather_json['minutely']['summary']
         daily_forecast = weather_json['hourly']['summary']
         weekly_forecast = weather_json['daily']['summary']
         icon = weather_json['currently']['icon']
         wind_speed = int(weather_json['currently']['windSpeed'])
 
-        return {'temperature': temperature, 'icon': icon, 'windSpeed': wind_speed, 'current_forecast': current_forecast,'daily_forecast': daily_forecast, 'weekly_forecast': weekly_forecast}
+        return {'temperature': temperature, 'icon': icon, 'windSpeed': wind_speed, 'current_forecast': current_forecast, 'daily_forecast': daily_forecast, 'weekly_forecast': weekly_forecast}
 
     def get_location(self):
         # get location
@@ -49,18 +49,21 @@ class Knowledge(object):
         return ip_json['ip']
 
     def get_map_url(self, location, map_type=None):
-        if map_type == "satellite":
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=satellite&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
-        elif map_type == "terrain":
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=terrain&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
-        elif map_type == "hybrid":
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=hybrid&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
-        else:
-            return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=roadmap&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
+        return "http://maps.googleapis.com/maps/api/staticmap?center="+location+"&zoom=13&scale=false&size=1200x600&maptype=roadmap&layer=traffic&format=png&key=AIzaSyAx_nPgGLpiiak3Ey0YgDaJjoqlcjZko1A"
+
+        # if map_type == "satellite":
+        #     return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=satellite&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
+        # elif map_type == "terrain":
+        #     return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=terrain&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
+        # elif map_type == "hybrid":
+        #     return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=hybrid&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
+        # else:
+        #     return "http://maps.googleapis.com/maps/api/staticmap?center=%s&zoom=13&scale=false&size=1200x600&maptype=roadmap&format=png&keyAIzaSyAp9blWvD8wxs89hTRlzo87fNldbNyjm7s" % location
 
     def get_news(self):
         ret_headlines = []
-        feed = feedparser.parse("https://news.google.com/news?ned=%s&output=rss" % self.news_country_code)
+        feed = feedparser.parse(
+            "https://news.google.com/news?ned=%s&output=rss" % self.news_country_code)
 
         for post in feed.entries[0:5]:
             ret_headlines.append(post.title)
@@ -69,8 +72,8 @@ class Knowledge(object):
 
     def get_holidays(self):
         today = datetime.datetime.now()
-        r = requests.get("http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForYear&year=%s&country=usa" % today.year)
+        r = requests.get(
+            "http://kayaposoft.com/enrico/json/v1.0/?action=getPublicHolidaysForYear&year=%s&country=india" % today.year)
         holidays = json.loads(r.text)
 
         return holidays
-

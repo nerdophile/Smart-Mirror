@@ -1,0 +1,9 @@
+{
+  "version" : 20160513,
+  "zip-command" : "zip Smart-Mirror.zip Smart-Mirror/app.json Smart-Mirror/entities/*.json Smart-Mirror/actions.json Smart-Mirror/stories.json Smart-Mirror/expressions.json",
+  "data" : {
+    "name" : "Smart-Mirror",
+    "description" : "smart mirror assistant",
+    "lang" : "en"
+  }
+}

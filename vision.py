@@ -2,7 +2,7 @@ import sys
 
 vision_enabled = False
 try:
-    import cv2
+    import opencv as cv2
     vision_enabled = True
 except Exception as e:
     print("Warning: OpenCV not installed. To use facial recognition, make sure you've properly configured OpenCV.")

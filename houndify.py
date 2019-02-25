@@ -4,12 +4,12 @@
 import base64
 import hashlib
 import hmac
-import httplib
+import http.client
 import json
 import threading
 import time
 import uuid
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import struct
 
 try:
@@ -125,12 +125,12 @@ class TextHoundClient(_BaseHoundClient):
       headers = self._generateHeaders(self.HoundRequestInfo)
 
       if self.proxyHost:
-        conn = httplib.HTTPSConnection(self.proxyHost, self.proxyPort)
+        conn = http.client.HTTPSConnection(self.proxyHost, self.proxyPort)
         conn.set_tunnel(self.hostname, headers = self.proxyHeaders) 
       else:
-        conn = httplib.HTTPSConnection(self.hostname)
+        conn = http.client.HTTPSConnection(self.hostname)
 
-      conn.request('GET', TEXT_ENDPOINT + '?query=' + urllib.quote(query), headers = headers)
+      conn.request('GET', TEXT_ENDPOINT + '?query=' + urllib.parse.quote(query), headers = headers)
       resp = conn.getresponse()
 
       raw_response = resp.read()
@@ -213,10 +213,10 @@ class StreamingHoundClient(_BaseHoundClient):
       self.buffer = ''
     
       if self.proxyHost:
-        self.conn = httplib.HTTPSConnection(self.proxyHost, self.proxyPort)
+        self.conn = http.client.HTTPSConnection(self.proxyHost, self.proxyPort)
         self.conn.set_tunnel(self.hostname, headers = self.proxyHeaders) 
       else:
-        self.conn = httplib.HTTPSConnection(self.hostname)
+        self.conn = http.client.HTTPSConnection(self.hostname)
 
       self.conn.putrequest('POST', VOICE_ENDPOINT)
 

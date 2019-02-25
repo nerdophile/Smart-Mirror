@@ -17,11 +17,11 @@ BUFFER_SIZE = 512
 #
 class MyListener(houndify.HoundListener):
   def onPartialTranscript(self, transcript):
-    print "Partial transcript: " + transcript
+    print(("Partial transcript: " + transcript))
   def onFinalResponse(self, response):
-    print "Final response: " + str(response)
+    print(("Final response: " + str(response)))
   def onError(self, err):
-    print "Error: " + str(err)
+    print(("Error: " + str(err)))
 
 
 client = houndify.StreamingHoundClient(CLIENT_ID, CLIENT_KEY, "test_user")
@@ -42,11 +42,11 @@ client.setLocation(37.388309, -121.973968)
 
 audio = wave.open(AUDIO_FILE)
 if audio.getsampwidth() != 2:
-  print "%s: wrong sample width (must be 16-bit)" % fname
+  print(("%s: wrong sample width (must be 16-bit)" % fname))
 if audio.getframerate() != 8000 and audio.getframerate() != 16000:
-  print "%s: unsupported sampling frequency (must be either 8 or 16 khz)" % fname
+  print(("%s: unsupported sampling frequency (must be either 8 or 16 khz)" % fname))
 if audio.getnchannels() != 1:
-  print "%s: must be single channel (mono)" % fname
+  print(("%s: must be single channel (mono)" % fname))
 
 client.setSampleRate(audio.getframerate())
 client.start(MyListener())

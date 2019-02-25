@@ -1,6 +1,6 @@
 //aiclient.js
 
-Module.register("aiclient",{
+Module.register("aiclient", {
 
 	// Default module config.
 	defaults: {
@@ -22,35 +22,35 @@ Module.register("aiclient",{
 	},
 
 	// Define required translations.
-	getTranslations: function() {
+	getTranslations: function () {
 		// The translations for the defaut modules are defined in the core translation files.
 		// Therefor we can just return false. Otherwise we should have returned a dictionairy.
 		// If you're trying to build your own module including translations, check out the documentation.
 		return false;
 	},
 
-	getScripts: function() {
+	getScripts: function () {
 		return ["js/jquery.js"];
 	},
 
 	// Define required scripts.
-	getStyles: function() {
+	getStyles: function () {
 		return ["weather-icons.css", "currentweather.css"];
 	},
 
 	// Define start sequence.
-	start: function() {
+	start: function () {
 		Log.log("Starting module: " + this.name);
 
 		this.sendSocketNotification("INITIALIZE", {})
-		
+
 	},
 
 	// Override dom generator.
-	getDom: function() {
+	getDom: function () {
 		var wrapper = document.createElement("div");
 		/*wrapper.className = "contain";*/
-		switch(this.current_selection) {
+		switch (this.current_selection) {
 			case "STATEMENT":
 				wrapper.innerHTML = this.text;
 				wrapper.className = "medium bright";
@@ -60,184 +60,183 @@ Module.register("aiclient",{
 				break
 
 			case "OTHER":
-              if (this.other.title) {
-			
-			var title = document.createElement('div')
-				title.innerHTML = this.other.command;
-				title.className = "medium bright";
-				title.style.marginTop = "-292px";
-				title.style.marginLeft = "425px";
-				title.style.position = "absolute";
-           
-                 
-				wrapper.appendChild(title)
-				
+				if (this.other.title) {
 
-				var keys = ["title", "subtitle", "details", "url"],
-    j, k;
-var con = document.createElement("div")
-con.className = "con";
-for (j = 0; j < this.other[keys[0]].length; j++) {
-var td = document.createElement("div")
-td.className = "hotel";
- var info = document.createElement("div")
-         info.className = "subs";
-		 var info1 = document.createElement("div")
-		 info1.className = "subtitle";
-         
-		  var img = document.createElement("div")
-         img.className = "mainimage";
-		  var det = document.createElement("div")
-         det.className = "det";
-   
-    for (k = 0; k < keys.length; k++) {
-         if (keys[k] === 'url'){
-		 img.innerHTML = '<img src="' + this.other[keys[k]][j] + '"></div>';
-		 td.appendChild(img);
-		 }
-		  if (keys[k] === 'title'){
-		 info.innerHTML = '<h1>' + this.other[keys[k]][j] + '</h1>';
-		 td.appendChild(info);
-		  }
-		  if (keys[k] === 'subtitle'){
-		 info1.innerHTML = '<h2>' + this.other[keys[k]][j] + '</h2>';
-		 td.appendChild(info1);
-		  }
-		  
-		   if (keys[k] === 'details'){
-		 det.innerHTML = '<p>' + this.other[keys[k]][j] + '</p>';
-		 td.appendChild(det);
-		  }
-	
-		con.appendChild(td);	
-    }
-	
-}
-wrapper.appendChild(con);	
-			
-}
-			else{
-				console.log(this.other)
-				var title = document.createElement('div')
-				title.innerHTML = this.other;
-				title.className = "medium bright";
-				title.style.marginTop = "50px";
-				title.style.marginLeft = "155px";
-				wrapper.appendChild(title);
-			}	
+					var title = document.createElement('div')
+					title.innerHTML = this.other.command;
+					title.className = "medium bright";
+					title.style.marginTop = "-292px";
+					title.style.marginLeft = "425px";
+					title.style.position = "absolute";
+
+
+					wrapper.appendChild(title)
+
+
+					var keys = ["title", "subtitle", "details", "url"],
+						j, k;
+					var con = document.createElement("div")
+					con.className = "con";
+					for (j = 0; j < this.other[keys[0]].length; j++) {
+						var td = document.createElement("div")
+						td.className = "hotel";
+						var info = document.createElement("div")
+						info.className = "subs";
+						var info1 = document.createElement("div")
+						info1.className = "subtitle";
+
+						var img = document.createElement("div")
+						img.className = "mainimage";
+						var det = document.createElement("div")
+						det.className = "det";
+
+						for (k = 0; k < keys.length; k++) {
+							if (keys[k] === 'url') {
+								img.innerHTML = '<img src="' + this.other[keys[k]][j] + '"></div>';
+								td.appendChild(img);
+							}
+							if (keys[k] === 'title') {
+								info.innerHTML = '<h1>' + this.other[keys[k]][j] + '</h1>';
+								td.appendChild(info);
+							}
+							if (keys[k] === 'subtitle') {
+								info1.innerHTML = '<h2>' + this.other[keys[k]][j] + '</h2>';
+								td.appendChild(info1);
+							}
+
+							if (keys[k] === 'details') {
+								det.innerHTML = '<p>' + this.other[keys[k]][j] + '</p>';
+								td.appendChild(det);
+							}
+
+							con.appendChild(td);
+						}
+
+					}
+					wrapper.appendChild(con);
+
+				} else {
+					console.log(this.other)
+					var title = document.createElement('div')
+					title.innerHTML = this.other;
+					title.className = "medium bright";
+					title.style.marginTop = "50px";
+					title.style.marginLeft = "155px";
+					wrapper.appendChild(title);
+				}
 				break
 
 			case "ZOMATO":
-			
+
 				var title = document.createElement('div')
 				title.innerHTML = "Here are some results"
 				title.className = "medium bright";
 				title.style.marginTop = "50px";
 				title.style.marginLeft = "155px";
-           
+
 
 				wrapper.appendChild(title)
-				
-               var container = document.createElement("div");
-		       container.className = "contain";
-		       container.innerHTML = "<img src=\"" + this.file("zomato.png") + "\" style=\"border-radius:50%;top:-24%;left:-21%;position:absolute;transform:scale(.3);\">"
-		      
+
+				var container = document.createElement("div");
+				container.className = "contain";
+				container.innerHTML = "<img src=\"" + this.file("zomato.png") + "\" style=\"border-radius:50%;top:-24%;left:-21%;position:absolute;transform:scale(.3);\">"
+
 				var table = document.createElement("table");
 				table.className = "table";
-				var orderArrayHeader = ["Restaurant Name"," Cost for Two "," Rating"];
+				var orderArrayHeader = ["Restaurant Name", " Cost for Two ", " Rating"];
 				var thead = document.createElement('thead');
 
-table.appendChild(thead);
-for(var i=0;i<orderArrayHeader.length;i++){
-    thead.appendChild(document.createElement("th")).
-    appendChild(document.createTextNode(orderArrayHeader[i]));
-}
- 
- 
-					
-var keys = ["cabtype", "maxfare", "minfare"];
-for (var j = 0; j < this.zomato[keys[0]].length; j++) {
-  var tr = table.insertRow();
-  
-  for (var k = 0; k < keys.length; k++) {
-    var td = tr.insertCell();
-  
-    td.innerHTML = this.zomato[keys[k]][j];
-  }
-}
-	
-						
-				
+				table.appendChild(thead);
+				for (var i = 0; i < orderArrayHeader.length; i++) {
+					thead.appendChild(document.createElement("th")).
+					appendChild(document.createTextNode(orderArrayHeader[i]));
+				}
+
+
+
+				var keys = ["cabtype", "maxfare", "minfare"];
+				for (var j = 0; j < this.zomato[keys[0]].length; j++) {
+					var tr = table.insertRow();
+
+					for (var k = 0; k < keys.length; k++) {
+						var td = tr.insertCell();
+
+						td.innerHTML = this.zomato[keys[k]][j];
+					}
+				}
+
+
+
 
 				container.appendChild(table)
 				wrapper.appendChild(container)
-				break	
-
-			  	
-			case "VIDEO":
-			
-				
-		var videoWrapper = document.createElement("div")
-        videoWrapper.className = "videoWrapper"
-        var iframe = document.createElement('iframe')
-        iframe.src =  this.videoURL 
-        videoWrapper.appendChild(iframe)
-        /*videoWrapper.style.position = "relative"*/
-         var ico = document.createElement("div");
-        ico.innerHTML = "<img src=\"" + this.file("yout.png") + "\" style=\"border-radius:50%;top:-3%;left:7%;position:absolute;transform:scale(.12);z-index:99;\">"
-        /*ico.style.position = "absolute";*/
-        videoWrapper.appendChild(ico)
-        wrapper.appendChild(videoWrapper)
-
-        var container = document.createElement("div");
-		       container.className = "contain";
-		       container.style.transform = "scale(.5)";
-		       container.style.position = "absolute";
-		       container.style.top = "800px";
-		       container.style.left = "-571px";
-		      /* container.style.marginTop = "-50em";
-		       container.style.marginRight = "3em";*/
-		       container.innerHTML = "<span>\"" + this.videoTITLE +  "\" </span><span>\"" + this.videoCHANNEL +  "\" </span>";
-		      /* <img src=\"" + this.videoTHUMB + "\" style=\"border:1px solid black;width:10%;border-radius:50%;margin-right:10px;\">*/
-              wrapper.appendChild(container)
-               
 				break
 
-			/*case "MODULE":
+
+			case "VIDEO":
+
+
+				var videoWrapper = document.createElement("div")
+				videoWrapper.className = "videoWrapper"
+				var iframe = document.createElement('iframe')
+				iframe.src = this.videoURL
+				videoWrapper.appendChild(iframe)
+				/*videoWrapper.style.position = "relative"*/
+				var ico = document.createElement("div");
+				ico.innerHTML = "<img src=\"" + this.file("yout.png") + "\" style=\"border-radius:50%;top:-3%;left:7%;position:absolute;transform:scale(.12);z-index:99;\">"
+				/*ico.style.position = "absolute";*/
+				videoWrapper.appendChild(ico)
+				wrapper.appendChild(videoWrapper)
+
+				var container = document.createElement("div");
+				container.className = "contain";
+				container.style.transform = "scale(5.5)";
+				container.style.position = "absolute";
+				container.style.top = "1800px";
+				container.style.left = "-571px";
+				/* container.style.marginTop = "-50em";
+				 container.style.marginRight = "3em";*/
+				container.innerHTML = "<span>\"" + this.videoTITLE + "\" </span><span>\"" + this.videoCHANNEL + "\" </span>";
+				/* <img src=\"" + this.videoTHUMB + "\" style=\"border:1px solid black;width:10%;border-radius:50%;margin-right:10px;\">*/
+				wrapper.appendChild(container)
+
+				break
+
+				/*case "MODULE":
 
 			
 
-				break	*/
+					break	*/
 			case "CAB":
-				
+
 				var circular = document.createElement("div");
-circular.className = "circular--landscape"
-circular.innerHTML = "<img src= 'http://is3.mzstatic.com/image/thumb/Purple20/v4/04/6b/25/046b25a7-e884-989a-bc3c-0a392247212f/source/392x696bb.jpg'><div class='est'>" + this.cab.minfare + " MIN</div><div class='carname'>Toyota Pyrus</div><div class='plate'>MH 14 BM 8998</div><div class='cost'>" + this.cab.maxfare + "</div><div class='status'>" + this.cab.status + "</div><div class='type'>" + this.cab.cabtype + "</div>";
+				circular.className = "circular--landscape"
+				circular.innerHTML = "<img src= 'http://is3.mzstatic.com/image/thumb/Purple20/v4/04/6b/25/046b25a7-e884-989a-bc3c-0a392247212f/source/392x696bb.jpg'><div class='est'>" + this.cab.minfare + " MIN</div><div class='carname'>Toyota Pyrus</div><div class='plate'>MH 14 BM 8998</div><div class='cost'>" + this.cab.maxfare + "</div><div class='status'>" + this.cab.status + "</div><div class='type'>" + this.cab.cabtype + "</div>";
 
-var spans = document.createElement("div");
-spans.className = "info"
-spans.innerHTML = "<img src=\"" + this.cab.pic  + "\">";
-circular.appendChild(spans)
+				var spans = document.createElement("div");
+				spans.className = "info"
+				spans.innerHTML = "<img src=\"" + this.cab.pic + "\">";
+				circular.appendChild(spans)
 
-wrapper.appendChild(circular)
+				wrapper.appendChild(circular)
 
 
-var arriving = document.createElement("div");
-arriving.className = "arr"
-arriving.innerHTML = this.cab.driver;
-wrapper.appendChild(arriving)
- 
-var box = document.createElement("div");
-box.className = "box";
-box.innerHTML = "<div class='card__face__path'></div><div class='card__face__from-to'><p><span style='margin-right:5px;'>Pickup:</span>" + this.cab.from + "</p><p><span style='margin-right:5px;'>Dropoff:</span>" + this.cab.to + "</p></div> <button type='button' class='flat-button large red'>Cancel Ride</button></div>";
-wrapper.appendChild(box);
+				var arriving = document.createElement("div");
+				arriving.className = "arr"
+				arriving.innerHTML = this.cab.driver;
+				wrapper.appendChild(arriving)
 
-var ico = document.createElement("div");
-ico.innerHTML = "<img src="+ this.file("ube.png") +" style=\"border-radius:50%;top:-48%;left:23%;position:absolute;transform:scale(.2);z-index:99;\">"
-wrapper.appendChild(ico)
+				var box = document.createElement("div");
+				box.className = "box";
+				box.innerHTML = "<div class='card__face__path'></div><div class='card__face__from-to'><p><span style='margin-right:5px;'>Pickup:</span>" + this.cab.from + "</p><p><span style='margin-right:5px;'>Dropoff:</span>" + this.cab.to + "</p></div> <button type='button' class='flat-button large red'>Cancel Ride</button></div>";
+				wrapper.appendChild(box);
 
-document.body.appendChild(wrapper);
-				   break	
+				var ico = document.createElement("div");
+				ico.innerHTML = "<img src=" + this.file("ube.png") + " style=\"border-radius:50%;top:-48%;left:23%;position:absolute;transform:scale(.2);z-index:99;\">"
+				wrapper.appendChild(ico)
+
+				document.body.appendChild(wrapper);
+				break
 			case "WEATHER":
 				var small = document.createElement("div");
 				small.className = "normal medium";
@@ -255,12 +254,12 @@ document.body.appendChild(wrapper);
 				spacer.innerHTML = "&nbsp;";
 				small.appendChild(spacer);
 
-				var sunriseSunsetIcon = document.createElement("span"); 
+				var sunriseSunsetIcon = document.createElement("span");
 				if (this.weather.hour >= 4 && this.weather.hour < 10) {
 					sunriseSunsetIcon.className = "wi dimmed " + "wi-sunrise"; //this.sunriseSunsetIcon
-				} else if (this.weather.hour >=10 && this.weather.hour < 18) {
+				} else if (this.weather.hour >= 10 && this.weather.hour < 18) {
 					sunriseSunsetIcon.className = "wi dimmed " + "wi-day-sunny"; //this.sunriseSunsetIcon
-				} else if (this.weather.hour >=18 && this.weather.hour < 22) {
+				} else if (this.weather.hour >= 18 && this.weather.hour < 22) {
 					sunriseSunsetIcon.className = "wi dimmed " + "wi-sunset"; //this.sunriseSunsetIcon
 				} else {
 					sunriseSunsetIcon.className = "wi dimmed " + "wi-night-clear"; //this.sunriseSunsetIcon
@@ -268,7 +267,7 @@ document.body.appendChild(wrapper);
 				small.appendChild(sunriseSunsetIcon);
 
 				var sunriseSunsetTime = document.createElement("span");
-				sunriseSunsetTime.innerHTML = " " +  "Now" //this.sunriseSunsetTime;
+				sunriseSunsetTime.innerHTML = " " + "Now" //this.sunriseSunsetTime;
 				small.appendChild(sunriseSunsetTime);
 
 				var large = document.createElement("div");
@@ -302,7 +301,7 @@ document.body.appendChild(wrapper);
 				var subtitle = document.createElement('div')
 				subtitle.innerHTML = date.toDateString()
 				subtitle.className = "medium bright";
-				subtitle.style.margin = "10px" 
+				subtitle.style.margin = "10px"
 
 				wrapper.appendChild(title)
 				wrapper.appendChild(subtitle)
@@ -348,80 +347,69 @@ document.body.appendChild(wrapper);
 	},
 
 	// Override socket notification handler.
-	socketNotificationReceived: function(notification, payload) {
+	socketNotificationReceived: function (notification, payload) {
 		console.log("module received: " + notification)
 		var self = this
 
-		if (notification == "STATEMENT"){
+		if (notification == "STATEMENT") {
 			this.current_selection = "STATEMENT"
 			this.text = payload.text
 			this.updateDom(this.config.animationSpeed);
-		} 
-		else if (notification == "IMAGE") {
+		} else if (notification == "IMAGE") {
 			this.imageURL = payload.imageurl
 			this.current_selection = "IMAGE"
 			this.updateDom(this.config.animationSpeed);
-		} 
-
-		else if (notification == "OTHER") {
+		} else if (notification == "OTHER") {
 			this.current_selection = "OTHER"
 			this.other = payload
-			
-			
+
+
 			this.updateDom(this.config.animationSpeed);
 
-		}
-
-		else if (notification == "ZOMATO") {
+		} else if (notification == "ZOMATO") {
 			this.current_selection = "ZOMATO"
 			this.zomato = payload
-			
+
 			this.updateDom(this.config.animationSpeed);
 
-		}
-
-
-		else if (notification == "VIDEO") {
+		} else if (notification == "VIDEO") {
 			this.videoURL = payload.videourl
 			this.videoTHUMB = payload.videothumb
 			this.videoTITLE = payload.videotitle
 			this.videoCHANNEL = payload.chtitle
-			
+
 			this.current_selection = "VIDEO"
 			this.updateDom(this.config.animationSpeed);
-		}
-		else if (notification == "MODULE") {
-			 MM.getModules().enumerate(function(module) {
-        if (module.name === payload.moduleName || payload.moduleName === "all_modules") {
-          if (payload.turnOn) {
-            if (module.name === self.name) {
-              self.clear = false
-              self.updateDom();
-            }
-            module.show(1000, function() {
-              Log.log(module.name + ' is shown.');
-            });
-          } else {
-            if (module.name === self.name) {
-              self.clear = true
-              self.updateDom();
-            }
-            module.hide(1000, function() {
-              Log.log(module.name + ' is hidden.');
-            });
-          }
-        }
-      });
-		}
-		else if (notification == "CAB") {
+		} else if (notification == "MODULE") {
+			MM.getModules().enumerate(function (module) {
+				if (module.name === payload.moduleName || payload.moduleName === "all_modules") {
+					if (payload.turnOn) {
+						if (module.name === self.name) {
+							self.clear = false
+							self.updateDom();
+						}
+						module.show(1000, function () {
+							Log.log(module.name + ' is shown.');
+						});
+					} else {
+						if (module.name === self.name) {
+							self.clear = true
+							self.updateDom();
+						}
+						module.hide(1000, function () {
+							Log.log(module.name + ' is hidden.');
+						});
+					}
+				}
+			});
+		} else if (notification == "CAB") {
 			//this.cabURL = payload.cabt
 			//this.maURL = payload.ma
 			//this.miURL = payload.mi
 			this.cab = payload
 			this.current_selection = "CAB"
 			this.updateDom(this.config.animationSpeed);
-		}
-		else if (notification == "WEATHER") {
+		} else if (notification == "WEATHER") {
 			this.current_selection = "WEATHER"
 			this.weather = payload
 			this.updateDom(this.config.animationSpeed);

@@ -14,11 +14,11 @@ BUFFER_SIZE = 512
 #
 class MyListener(houndify.HoundListener):
   def onPartialTranscript(self, transcript):
-    print "Partial transcript: " + transcript
+    print(("Partial transcript: " + transcript))
   def onFinalResponse(self, response):
-    print "Final response: " + str(response)
+    print(("Final response: " + str(response)))
   def onError(self, err):
-    print "Error: " + str(err)
+    print(("Error: " + str(err)))
 
 
 client = houndify.StreamingHoundClient(CLIENT_ID, CLIENT_KEY, "test_user")

@@ -1,10 +1,5 @@
-# Smart_Mirror [![](https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg?colorB=ff0000)](https://github.com/akshaybahadur21/Smart_Mirror/blob/master/LICENSE.txt)  [![](https://img.shields.io/badge/Akshay-Bahadur-brightgreen.svg?colorB=ff0000)](https://akshaybahadur.com)
+
 Smart Mirror with AI as well as home automation.
-
-### Sourcerer
-[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/0)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/0)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/1)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/1)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/2)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/2)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/3)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/3)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/4)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/4)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/5)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/5)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/6)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/6)[![](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/images/7)](https://sourcerer.io/fame/akshaybahadur21/akshaybahadur21/Smart_Mirror/links/7)
-
-## Open Source
 
 1) [MichMich MagicMirror](https://magicmirror.builders/)
 
@@ -159,9 +154,7 @@ Start the app
 python bot.py
 ```
 
-## Working Example
 
-<img src="https://github.com/akshaybahadur21/Smart_Mirror/blob/master/smart_mirror.gif">
 
 
  
