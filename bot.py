@@ -1,6 +1,3 @@
-# bot.py
-
-# speechrecognition, pyaudio, brew install portaudio
 from nlg import NLG
 from vision import Vision
 from knowledge import Knowledge
@@ -23,7 +20,7 @@ sys.path.append("./")
 
 
 my_name = "Venky"
-launch_phrase = "ok mirror"
+launch_phrase = "ok mirror" 
 use_launch_phrase = False
 weather_api_token = "e4aac51555011ab74a2435cba8712b5b"
 wit_ai_token = "Bearer W456RBVL6OT4FX6OLAZVYRHJOPKXYDTR"
